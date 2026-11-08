@@ -1,0 +1,28 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: micro-test
+  description: Prueba de integración entre Backstage y GitHub
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    platform.wenia.com/template: microservice
+    platform.wenia.com/template-version: '1'
+spec:
+  type: service
+  lifecycle: experimental
+  owner: group:default/platform
+  providesApis:
+    - micro-test-platform
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: micro-test-platform
+  description: 'API for micro-test: platform'
+spec:
+  type: openapi
+  lifecycle: experimental
+  owner: group:default/platform
+  definition:
+    $text: ./docs/openapi.yaml
